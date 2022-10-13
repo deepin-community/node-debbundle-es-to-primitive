@@ -1,0 +1,64 @@
+Description: use function.name instead of module
+Author: Bastien Roucariès <rouca@debian.org>
+Forwarded:not-needed
+Reviewed-By: Xavier Guimard <yadd@debian.org>
+Last-Update: 2020-05-25
+
+--- a/test/es2015.js
++++ b/test/es2015.js
+@@ -4,7 +4,7 @@
+ var toPrimitive = require('../es2015');
+ var is = require('object-is');
+ //var forEach = require('foreach');
+-var functionName = require('function.prototype.name');
++//var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+ var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
+@@ -12,7 +12,7 @@
+ 
+ test('function properties', function (t) {
+ 	t.equal(toPrimitive.length, 1, 'length is 1');
+-	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
++	t.equal(toPrimitive.name, 'ToPrimitive', 'name is ToPrimitive');
+ 
+ 	t.end();
+ });
+--- a/test/es5.js
++++ b/test/es5.js
+@@ -4,13 +4,13 @@
+ var toPrimitive = require('../es5');
+ var is = require('object-is');
+ //var forEach = require('foreach');
+-var functionName = require('function.prototype.name');
++//var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ var hasSymbols = require('has-symbols')();
+ 
+ test('function properties', function (t) {
+ 	t.equal(toPrimitive.length, 1, 'length is 1');
+-	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
++	t.equal(toPrimitive.name, 'ToPrimitive', 'name is ToPrimitive');
+ 
+ 	t.end();
+ });
+--- a/test/es6.js
++++ b/test/es6.js
+@@ -4,7 +4,7 @@
+ var toPrimitive = require('../es6');
+ var is = require('object-is');
+ //var forEach = require('foreach');
+-var functionName = require('function.prototype.name');
++//var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+ var hasSymbols = require('has-symbols')();
+@@ -12,7 +12,7 @@
+ 
+ test('function properties', function (t) {
+ 	t.equal(toPrimitive.length, 1, 'length is 1');
+-	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
++	t.equal(toPrimitive.name, 'ToPrimitive', 'name is ToPrimitive');
+ 
+ 	t.end();
+ });

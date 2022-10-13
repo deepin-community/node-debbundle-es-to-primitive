@@ -1,0 +1,37 @@
+version=4
+opts="pgpmode=none,dversionmangle=s/@DEB_EXT@//,repacksuffix=+ds,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-debbundle-es-to-primitive-$1%" \
+	     https://github.com/ljharb/es-to-primitive/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ group
+
+opts="pgpmode=none,component=node-is-callable,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-is-callable-$1%" \
+	     https://github.com/ljharb/is-callable/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+opts="pgpmode=none,component=node-make-generator-function,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-make-generator-function-$1%" \
+	     https://github.com/ljharb/make-generator-function/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+opts="pgpmode=none,component=node-make-arrow-function,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-make-arrow-function-$1%" \
+	     https://github.com/ljharb/make-arrow-function/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+opts="pgpmode=none,component=node-is-date-object,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-is-date-object-$1%" \
+	     https://github.com/ljharb/is-date-object/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+opts="pgpmode=none,component=node-is-symbol,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-is-symbol-$1%" \
+	     https://github.com/ljharb/is-symbol/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+opts="pgpmode=none,component=node-has-symbols,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-has-symbols-$1%" \
+	     https://github.com/ljharb/has-symbols/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+opts="pgpmode=none,component=node-object-is,dversionmangle=s/@DEB_EXT@//,filenamemangle=s%(?:.*?)?v?(@ANY_VERSION@@ARCHIVE_EXT@)$%node-object-is-$1%" \
+	     https://github.com/ljharb/object-is/tags \
+	     (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@ checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=types-es-to-primitive,pgpmode=none" \
+ https://registry.npmjs.org/@types/es-to-primitive https://registry.npmjs.org/@types/es-to-primitive/-/es-to-primitive-([\d\.]+)@ARCHIVE_EXT@ checksum

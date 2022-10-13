@@ -1,0 +1,47 @@
+Source: node-debbundle-es-to-primitive
+Section: javascript
+Priority: optional
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Bastien Roucariès <rouca@debian.org>
+Testsuite: autopkgtest-pkg-nodejs
+Build-Depends:
+ debhelper-compat (= 13)
+ , dh-sequence-nodejs
+ , node-define-properties <!nocheck>
+ , node-es-abstract <!nocheck>
+ , node-tap <!nocheck>
+ , node-tape <!nocheck>
+Standards-Version: 4.5.0
+Homepage: https://github.com/ljharb/es-to-primitive#readme
+Vcs-Git: https://salsa.debian.org/js-team/node-es-to-primitive.git
+Vcs-Browser: https://salsa.debian.org/js-team/node-es-to-primitive
+Rules-Requires-Root: no
+
+Package: node-debbundle-es-to-primitive
+Architecture: all
+Depends:
+ ${misc:Depends}
+ , node-define-properties
+Provides: node-es-to-primitive (=${source:Version}), ${nodejs:Provides}
+Recommends: node-es-abstract
+Multi-Arch: foreign
+Description: Pure javascript implementation of ToPrimitive algorithm
+ This package provides a ponyfill for ToPrimitive algorithm, thus
+ converting of JavaScript object to a primitive value. In JavaScript
+ a primitive is data that is not an object and has no method. There
+ are seven primitive data type: string, number, bigint, boolean, null,
+ undefined and symbol.
+ .
+ This bundle package includes also a few small packages
+   - node-is-callable test whether an object is callable.
+   - node-make-generator-function : returns an arbitrary generator function,
+     or undefined if generator syntax is unsupported.
+   - node-make-arrow-function: returns an arbitrary arrow function,
+     or undefined if arrow function syntax is unsupported.
+   - node-is-date-object: test whether an object is a date.
+   - node-has-symbol: determine if the JS environment has Symbol support.
+     support specs or shams.
+   - node-is-symbol: test whether a value is a JavaScript symbol.
+   - node-object-is: shim for Object.is
+ .
+ Node.js is an event-based server-side JavaScript engine.

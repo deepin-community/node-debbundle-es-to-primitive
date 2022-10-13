@@ -1,0 +1,15 @@
+# see git-dpm(1) from git-dpm package
+adbb71f02cd52125ee82d5b752275214779a424c
+adbb71f02cd52125ee82d5b752275214779a424c
+5d8421398fb033e1007c1a734f07ba0314bf5b27
+5d8421398fb033e1007c1a734f07ba0314bf5b27
+node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig.tar.gz
+2043b400ecaedc6f905f8e7da96814f61d60cf00
+10699
+component:f61efb99551b3a5bd4ffae33d12d599eacba4683:9782:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-is-callable.tar.gz
+component:525f2fab329af0e68f08da27dc62a8cb99be48db:3101:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-make-generator-function.tar.gz
+component:94487c58099734dfe5ab98b3ad3376519c4922f3:3808:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-make-arrow-function.tar.gz
+component:d29cd3c98766325409ebc7a01cccdab285b21e2f:6323:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-is-date-object.tar.gz
+component:9edb7b67edba7e0e68896e2689f54ef07cd931cc:7871:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-is-symbol.tar.gz
+component:f9dc8ba02fb5f56071717ddeaf300d002f99b2ca:4983:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-has-symbols.tar.gz
+component:295e2e1765c452bdc5881f5aae91a590ffaf0090:3449:node-debbundle-es-to-primitive_1.2.0+~1.1.4+~1.1.0+~1.1.0+~1.0.1+~1.0.2+~1.0.0+~1.0.1.orig-node-object-is.tar.gz

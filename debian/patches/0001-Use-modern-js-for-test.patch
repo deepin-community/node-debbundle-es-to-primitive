@@ -1,0 +1,184 @@
+Description: Use modern js for test
+Author: Bastien Roucariès <rouca@debian.org>
+Forwarded: not-needed
+Reviewed-By: Xavier Guimard <yadd@debian.org>
+Last-Update: 2020-05-26
+
+--- a/node-is-callable/test/index.js
++++ b/node-is-callable/test/index.js
+@@ -15,7 +15,7 @@
+ 	weirdlyCommentedArrowFn = Function('return cl/*/**/=>/**/ass - 1;')();
+ 	/* eslint-enable no-new-func */
+ } catch (e) { /**/ }
+-var forEach = require('foreach');
++//var forEach = require('foreach');
+ 
+ var noop = function () {};
+ var classFake = function classFake() { }; // eslint-disable-line func-name-matching
+@@ -135,7 +135,7 @@
+ });
+ 
+ test('Typed Arrays', function (st) {
+-	forEach(typedArrayNames, function (typedArray) {
++	typedArrayNames.forEach( function (typedArray) {
+ 		/* istanbul ignore if : covered in node 0.6 */
+ 		if (typeof global[typedArray] === 'undefined') {
+ 			st.comment('# SKIP typed array "' + typedArray + '" not supported');
+--- a/node-make-generator-function/test/index.js
++++ b/node-make-generator-function/test/index.js
+@@ -1,12 +1,12 @@
+ 'use strict';
+ 
+ var test = require('tape');
+-var forEach = require('for-each');
++//var forEach = require('for-each');
+ var iterate = require('iterate-iterator');
+ var generators = require('../')();
+ 
+ test('generators supported', { skip: generators.length === 0 }, function (t) {
+-	forEach(generators, function (genFunction) {
++	generators.forEach(function (genFunction) {
+ 		t.comment('genFunction: `' + genFunction + '`');
+ 		t.equal(typeof genFunction, 'function', 'genFunction is function');
+ 		t.deepEqual(iterate(genFunction()), [undefined], 'generator yields expected values');
+--- a/test/es2015.js
++++ b/test/es2015.js
+@@ -3,7 +3,7 @@
+ var test = require('tape');
+ var toPrimitive = require('../es2015');
+ var is = require('object-is');
+-var forEach = require('foreach');
++//var forEach = require('foreach');
+ var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+@@ -20,7 +20,7 @@
+ var primitives = [null, undefined, true, false, 0, -0, 42, NaN, Infinity, -Infinity, '', 'abc'];
+ 
+ test('primitives', function (t) {
+-	forEach(primitives, function (i) {
++	primitives.forEach(function (i) {
+ 		t.ok(is(toPrimitive(i), i), 'toPrimitive(' + debug(i) + ') returns the same value');
+ 		t.ok(is(toPrimitive(i, String), i), 'toPrimitive(' + debug(i) + ', String) returns the same value');
+ 		t.ok(is(toPrimitive(i, Number), i), 'toPrimitive(' + debug(i) + ', Number) returns the same value');
+@@ -34,7 +34,7 @@
+ 		Symbol.iterator,
+ 		Symbol['for']('foo') // eslint-disable-line no-restricted-properties
+ 	];
+-	forEach(symbols, function (sym) {
++	symbols.forEach(function (sym) {
+ 		t.equal(toPrimitive(sym), sym, 'toPrimitive(' + debug(sym) + ') returns the same value');
+ 		t.equal(toPrimitive(sym, String), sym, 'toPrimitive(' + debug(sym) + ', String) returns the same value');
+ 		t.equal(toPrimitive(sym, Number), sym, 'toPrimitive(' + debug(sym) + ', Number) returns the same value');
+@@ -50,7 +50,7 @@
+ 
+ test('Arrays', function (t) {
+ 	var arrays = [[], ['a', 'b'], [1, 2]];
+-	forEach(arrays, function (arr) {
++	arrays.forEach(function (arr) {
+ 		t.equal(toPrimitive(arr), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
+ 		t.equal(toPrimitive(arr, String), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
+ 		t.equal(toPrimitive(arr, Number), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
+@@ -60,7 +60,7 @@
+ 
+ test('Dates', function (t) {
+ 	var dates = [new Date(), new Date(0), new Date(NaN)];
+-	forEach(dates, function (date) {
++	dates.forEach(function (date) {
+ 		t.equal(toPrimitive(date), String(date), 'toPrimitive(' + debug(date) + ') returns the string version of the date');
+ 		t.equal(toPrimitive(date, String), String(date), 'toPrimitive(' + debug(date) + ') returns the string version of the date');
+ 		t.ok(is(toPrimitive(date, Number), Number(date)), 'toPrimitive(' + debug(date) + ') returns the number version of the date');
+--- a/test/es5.js
++++ b/test/es5.js
+@@ -3,7 +3,7 @@
+ var test = require('tape');
+ var toPrimitive = require('../es5');
+ var is = require('object-is');
+-var forEach = require('foreach');
++//var forEach = require('foreach');
+ var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ var hasSymbols = require('has-symbols')();
+@@ -18,7 +18,7 @@
+ var primitives = [null, undefined, true, false, 0, -0, 42, NaN, Infinity, -Infinity, '', 'abc'];
+ 
+ test('primitives', function (t) {
+-	forEach(primitives, function (i) {
++	primitives.forEach(function (i) {
+ 		t.ok(is(toPrimitive(i), i), 'toPrimitive(' + debug(i) + ') returns the same value');
+ 		t.ok(is(toPrimitive(i, String), i), 'toPrimitive(' + debug(i) + ', String) returns the same value');
+ 		t.ok(is(toPrimitive(i, Number), i), 'toPrimitive(' + debug(i) + ', Number) returns the same value');
+@@ -32,7 +32,7 @@
+ 		Symbol.iterator,
+ 		Symbol['for']('foo') // eslint-disable-line no-restricted-properties
+ 	];
+-	forEach(symbols, function (sym) {
++	symbols.forEach(function (sym) {
+ 		t.equal(toPrimitive(sym), sym, 'toPrimitive(' + debug(sym) + ') returns the same value');
+ 		t.equal(toPrimitive(sym, String), sym, 'toPrimitive(' + debug(sym) + ', String) returns the same value');
+ 		t.equal(toPrimitive(sym, Number), sym, 'toPrimitive(' + debug(sym) + ', Number) returns the same value');
+@@ -51,7 +51,7 @@
+ 
+ test('Arrays', function (t) {
+ 	var arrays = [[], ['a', 'b'], [1, 2]];
+-	forEach(arrays, function (arr) {
++	arrays.forEach( function (arr) {
+ 		t.ok(is(toPrimitive(arr), arr.toString()), 'toPrimitive(' + debug(arr) + ') returns toString of the array');
+ 		t.equal(toPrimitive(arr, String), arr.toString(), 'toPrimitive(' + debug(arr) + ') returns toString of the array');
+ 		t.ok(is(toPrimitive(arr, Number), arr.toString()), 'toPrimitive(' + debug(arr) + ') returns toString of the array');
+@@ -61,7 +61,7 @@
+ 
+ test('Dates', function (t) {
+ 	var dates = [new Date(), new Date(0), new Date(NaN)];
+-	forEach(dates, function (date) {
++	dates.forEach(function (date) {
+ 		t.equal(toPrimitive(date), date.toString(), 'toPrimitive(' + debug(date) + ') returns toString of the date');
+ 		t.equal(toPrimitive(date, String), date.toString(), 'toPrimitive(' + debug(date) + ') returns toString of the date');
+ 		t.ok(is(toPrimitive(date, Number), date.valueOf()), 'toPrimitive(' + debug(date) + ') returns valueOf of the date');
+--- a/test/es6.js
++++ b/test/es6.js
+@@ -3,7 +3,7 @@
+ var test = require('tape');
+ var toPrimitive = require('../es6');
+ var is = require('object-is');
+-var forEach = require('foreach');
++//var forEach = require('foreach');
+ var functionName = require('function.prototype.name');
+ var debug = require('object-inspect');
+ 
+@@ -20,7 +20,7 @@
+ var primitives = [null, undefined, true, false, 0, -0, 42, NaN, Infinity, -Infinity, '', 'abc'];
+ 
+ test('primitives', function (t) {
+-	forEach(primitives, function (i) {
++	primitives.forEach(function (i) {
+ 		t.ok(is(toPrimitive(i), i), 'toPrimitive(' + debug(i) + ') returns the same value');
+ 		t.ok(is(toPrimitive(i, String), i), 'toPrimitive(' + debug(i) + ', String) returns the same value');
+ 		t.ok(is(toPrimitive(i, Number), i), 'toPrimitive(' + debug(i) + ', Number) returns the same value');
+@@ -34,7 +34,7 @@
+ 		Symbol.iterator,
+ 		Symbol['for']('foo') // eslint-disable-line no-restricted-properties
+ 	];
+-	forEach(symbols, function (sym) {
++	symbols.forEach(function (sym) {
+ 		t.equal(toPrimitive(sym), sym, 'toPrimitive(' + debug(sym) + ') returns the same value');
+ 		t.equal(toPrimitive(sym, String), sym, 'toPrimitive(' + debug(sym) + ', String) returns the same value');
+ 		t.equal(toPrimitive(sym, Number), sym, 'toPrimitive(' + debug(sym) + ', Number) returns the same value');
+@@ -50,7 +50,7 @@
+ 
+ test('Arrays', function (t) {
+ 	var arrays = [[], ['a', 'b'], [1, 2]];
+-	forEach(arrays, function (arr) {
++	arrays.forEach(function (arr) {
+ 		t.equal(toPrimitive(arr), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
+ 		t.equal(toPrimitive(arr, String), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
+ 		t.equal(toPrimitive(arr, Number), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
+@@ -60,7 +60,7 @@
+ 
+ test('Dates', function (t) {
+ 	var dates = [new Date(), new Date(0), new Date(NaN)];
+-	forEach(dates, function (date) {
++	dates.forEach(function (date) {
+ 		t.equal(toPrimitive(date), String(date), 'toPrimitive(' + debug(date) + ') returns the string version of the date');
+ 		t.equal(toPrimitive(date, String), String(date), 'toPrimitive(' + debug(date) + ') returns the string version of the date');
+ 		t.ok(is(toPrimitive(date, Number), Number(date)), 'toPrimitive(' + debug(date) + ') returns the number version of the date');
