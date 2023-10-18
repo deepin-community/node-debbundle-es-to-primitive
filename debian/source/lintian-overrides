@@ -1,0 +1,8 @@
+# Same author
+add-component-copyright node-has-symbols *
+add-component-copyright node-is-callable *
+add-component-copyright node-is-date-object *
+add-component-copyright node-is-symbol *
+add-component-copyright node-make-arrow-function *
+add-component-copyright node-make-generator-function *
+add-component-copyright node-object-is *

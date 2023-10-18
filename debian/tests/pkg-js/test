@@ -1,2 +1,2 @@
 #!/bin/sh
-tap -R spec test
+tap -R spec --no-cov test
