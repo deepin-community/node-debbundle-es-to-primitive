@@ -11,7 +11,7 @@ Build-Depends:
  , node-es-abstract <!nocheck>
  , node-tap <!nocheck>
  , node-tape <!nocheck>
-Standards-Version: 4.5.0
+Standards-Version: 4.6.0
 Homepage: https://github.com/ljharb/es-to-primitive#readme
 Vcs-Git: https://salsa.debian.org/js-team/node-es-to-primitive.git
 Vcs-Browser: https://salsa.debian.org/js-team/node-es-to-primitive
@@ -21,6 +21,7 @@ Package: node-debbundle-es-to-primitive
 Architecture: all
 Depends:
  ${misc:Depends}
+ , node-call-bind
  , node-define-properties
 Provides: node-es-to-primitive (=${source:Version}), ${nodejs:Provides}
 Recommends: node-es-abstract
